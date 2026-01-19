@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Green/Blue/Orange NGO Theme */
+    --background: 150 20% 97%;
+    --foreground: 200 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 200 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 25% 15%;
+
+    /* Primary: Trust Green */
+    --primary: 152 55% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Trust Blue */
+    --secondary: 205 85% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted backgrounds */
+    --muted: 150 15% 92%;
+    --muted-foreground: 200 15% 45%;
+
+    /* Accent: Action Orange */
+    --accent: 28 90% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 150 15% 85%;
+    --input: 150 15% 85%;
+    --ring: 152 55% 42%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar - Clean trust green */
+    --sidebar-background: 152 45% 20%;
+    --sidebar-foreground: 150 20% 95%;
+    --sidebar-primary: 28 90% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 152 40% 30%;
+    --sidebar-accent-foreground: 150 20% 95%;
+    --sidebar-border: 152 35% 25%;
+    --sidebar-ring: 28 90% 55%;
+    --sidebar: 152 45% 20%;
+
+    /* Chart colors */
+    --chart-1: 152 55% 42%;
+    --chart-2: 205 85% 45%;
+    --chart-3: 28 90% 55%;
+    --chart-4: 180 45% 50%;
+    --chart-5: 260 45% 55%;
+
+    /* Success/Warning/Info semantic */
+    --success: 152 55% 42%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 90% 50%;
+    --warning-foreground: 45 90% 15%;
+    --info: 205 85% 45%;
+    --info-foreground: 0 0% 100%;
+
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --font-serif: 'Lora', ui-serif, Georgia, serif;
+    --font-mono: 'Space Mono', ui-monospace, monospace;
+
+    --shadow-soft: 0 4px 20px -4px hsl(152 30% 20% / 0.1);
+    --shadow-card: 0 2px 12px -2px hsl(152 30% 20% / 0.08);
+    --shadow-elevated: 0 8px 30px -8px hsl(152 30% 20% / 0.15);
+  }
+
+  .dark {
+    --background: 200 25% 10%;
+    --foreground: 150 20% 95%;
+
+    --card: 200 25% 14%;
+    --card-foreground: 150 20% 95%;
+
+    --popover: 200 25% 14%;
+    --popover-foreground: 150 20% 95%;
+
+    --primary: 152 55% 50%;
+    --primary-foreground: 200 25% 10%;
+
+    --secondary: 205 85% 55%;
+    --secondary-foreground: 200 25% 10%;
+
+    --muted: 200 20% 20%;
+    --muted-foreground: 150 15% 65%;
+
+    --accent: 28 90% 60%;
+    --accent-foreground: 200 25% 10%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 200 20% 25%;
+    --input: 200 20% 25%;
+    --ring: 152 55% 50%;
+
+    --sidebar-background: 200 25% 8%;
+    --sidebar-foreground: 150 20% 95%;
+    --sidebar-primary: 28 90% 60%;
+    --sidebar-primary-foreground: 200 25% 10%;
+    --sidebar-accent: 200 20% 18%;
+    --sidebar-accent-foreground: 150 20% 95%;
+    --sidebar-border: 200 20% 20%;
+    --sidebar-ring: 28 90% 60%;
+    --sidebar: 200 25% 8%;
+
+    --chart-1: 152 55% 55%;
+    --chart-2: 205 85% 60%;
+    --chart-3: 28 90% 60%;
+    --chart-4: 180 45% 55%;
+    --chart-5: 260 45% 60%;
+
+    --success: 152 55% 50%;
+    --success-foreground: 200 25% 10%;
+    --warning: 45 90% 55%;
+    --warning-foreground: 45 90% 10%;
+    --info: 205 85% 55%;
+    --info-foreground: 200 25% 10%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+.impactflow-sidebar-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--sidebar-primary)) hsl(var(--sidebar-background));
+}
+
+.impactflow-sidebar-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.impactflow-sidebar-scrollbar::-webkit-scrollbar-track {
+  background: hsl(var(--sidebar-background));
+}
+
+.impactflow-sidebar-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--sidebar-accent));
+  border-radius: 9999px;
+  border: 2px solid hsl(var(--sidebar-background));
+}
+
+.impactflow-sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--sidebar-primary));
+}
