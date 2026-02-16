@@ -20,15 +20,25 @@ export function createApp() {
       crossOriginEmbedderPolicy: false,
     }),
   );
-  const allowedOrigins = new Set<string>([env.CLIENT_ORIGIN, "http://127.0.0.1:8080", "http://localhost:8080"]);
+  const allowedOrigins = new Set<string>([
+    env.CLIENT_ORIGIN,
+    "http://127.0.0.1:8080",
+    "http://localhost:8080",
+    "https://demodonation.healthspire.org",
+    "https://healthspire.org",
+  ]);
   app.use(
     cors({
       origin: (origin, callback) => {
         if (!origin || origin === "null") return callback(null, true);
         if (allowedOrigins.has(origin)) return callback(null, true);
+        // Allow any subdomain of healthspire.org in production
+        if (env.NODE_ENV === "production" && origin.endsWith(".healthspire.org")) return callback(null, true);
         return callback(null, false);
       },
       credentials: true,
+      methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+      allowedHeaders: ["Content-Type", "Authorization"],
     }),
   );
   app.use(express.json({ limit: "2mb" }));
