@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "seed": "npm run build && node seed-users.js",
+    "seed:admin": "npm run build && node seed-admin.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
